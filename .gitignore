@@ -1,0 +1,6 @@
+.vs
+*.vcxproj.user
+*.ilk
+*.pdb
+.git/
+bin-int/
