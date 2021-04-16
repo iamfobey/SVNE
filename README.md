@@ -18,7 +18,7 @@ After cloning the repository, run the project and build it. In the ```bin/(platf
 
 #### 2) Let's create a window!
 
-In the settings.svne file we created earlier, write 3 lines:
+In the ```settings.svne``` file we created earlier, write 3 lines:
 ```
 Title = Window
 Width = 1280
