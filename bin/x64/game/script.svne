@@ -1,7 +1,5 @@
-Character me = Bruh
-Character la = Pruh
-background bg.jpg
-me Hello World!
-la Hello World!
-txt sdfmponfdpsdnf
-txt fwoirniovwbiowervio
+character me = Dezlow
+background bg1.jpg
+me Hello World 1!
+background bg2.jpg
+me Hello World 2!
