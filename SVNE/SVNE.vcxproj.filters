@@ -21,7 +21,7 @@
     <ClInclude Include="src\Core\Engine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Script\Script.h">
+    <ClInclude Include="src\Parsers\Script\Script.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Game.h">
@@ -30,7 +30,10 @@
     <ClInclude Include="src\Tools\Tools.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Settings\Settings.h">
+    <ClInclude Include="src\Parsers\Settings\Settings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\TextBox.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +44,7 @@
     <ClCompile Include="src\Core\Engine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Script\Script.cpp">
+    <ClCompile Include="src\Parsers\Script\Script.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Game.cpp">
@@ -50,7 +53,10 @@
     <ClCompile Include="src\Tools\Tools.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Settings\Settings.cpp">
+    <ClCompile Include="src\Parsers\Settings\Settings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tools\TextBox.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

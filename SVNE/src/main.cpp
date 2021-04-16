@@ -1,5 +1,4 @@
 #include "Core/Engine.h"
-#include <iostream>
 
 int main() 
 {

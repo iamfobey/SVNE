@@ -1,12 +1,13 @@
 #pragma once
 
 #include "../Core/Engine.h"
-#include "../Script/Script.h"
+#include "../Parsers/Script/Script.h"
+#include "../Tools/TextBox.h"
 
 class Game
 {
 public:
-	Game(std::vector<Params> pVector);
+	Game(std::vector<ScriptStruct> pVector);
 	~Game();
 	void Input();
 	void update(sf::RenderWindow& window);
@@ -18,13 +19,15 @@ private:
 	sf::Text CharacterText;
 	sf::Text text;
 
-	std::vector<Params> param;
+	std::vector<ScriptStruct> param;
 	bool WindowClose;
 	int line;
 
-	std::string GamePath = "game\\";
+	TextBox TextBox;
 
-	sf::RectangleShape TextBox;
+	std::string::size_type textPos;
+
+	sf::Clock textClock;
 
 	sf::Texture textureBG;
 	sf::Sprite spriteBG;

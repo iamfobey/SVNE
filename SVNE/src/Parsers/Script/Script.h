@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Core/stdafx.h"
+#include "Core/stdafx.h"
 
-enum ScriptDefs
+enum ScriptEnum
 {
 	AMBIENCE,
 	NAMEBOX,
@@ -16,9 +16,9 @@ enum ScriptDefs
 	CG
 };
 
-struct Params
+struct ScriptStruct
 {
-	ScriptDefs type;
+	ScriptEnum type;
 	std::string content;
 	std::string CharText;
 	std::string CharName;
@@ -30,12 +30,10 @@ public:
 	Script();
 	~Script();
 	void ParseCharacters();
-	std::vector<Params> Parse();
+	std::vector<ScriptStruct> Parse();
 private:
 	std::vector<std::string> CharNames;
 	std::vector<std::string> CharDefs;
-
-	std::string ScriptsPath = "game\\";
 
 	std::fstream ScriptFile;
 };

@@ -2,13 +2,8 @@
 
 #include "stdafx.h"
 #include "../Game/Game.h"
-
-struct Settings
-{
-	int WIDTH;
-	int HEIGHT;
-	std::string TITLE;
-};
+#include "../Parsers/Script/Script.h"
+#include "../Parsers/Settings/Settings.h"
 
 class Engine
 {
@@ -21,9 +16,11 @@ private:
 	sf::RenderWindow window;
 	sf::VideoMode VMWindow;
 
-	std::fstream FileSettings;
+	Script script;
+	std::vector<ScriptStruct> ScriptVector;
 
-	Settings SETTINGS;
+	Settings settings;
 
+	sf::View view;
 	sf::Event event;
 };

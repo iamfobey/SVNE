@@ -3,7 +3,7 @@
 Script::Script()
 {
 	CheckIsTransition(ScriptFile, "game\\script.svne");
-	ScriptFile.open(ScriptsPath + "script.svne", std::ios::in);
+	ScriptFile.open("game\\script.svne", std::ios::in);
 }
 
 Script::~Script()
@@ -36,13 +36,13 @@ void Script::ParseCharacters()
 		}
 	}
 	ScriptFile.close();
-	ScriptFile.open(ScriptsPath + "script.svne", std::ios::in);
+	ScriptFile.open("game\\script.svne", std::ios::in);
 }
 
-std::vector<Params> Script::Parse()
+std::vector<ScriptStruct> Script::Parse()
 {
-	std::vector<Params> ParamVector;
-	Params params;
+	std::vector<ScriptStruct> ScriptVector;
+	ScriptStruct ScriptList;
 
 	std::string type;
 	std::string text;
@@ -57,15 +57,15 @@ std::vector<Params> Script::Parse()
 
 			if (type == "background")
 			{
-				params.content = text;
-				params.type = ScriptDefs::BG;
+				ScriptList.content = text;
+				ScriptList.type = ScriptEnum::BG;
 			}
 			else if (type == "txt")
 			{
-				params.type = ScriptDefs::TEXT;
-				params.content = text;
+				ScriptList.type = ScriptEnum::TEXT;
+				ScriptList.content = text;
 			}
-			else if (type == "Character")
+			else if (type == "character")
 			{
 				std::string temp = text;
 				text.erase(0, text.find("=") + 2);
@@ -73,19 +73,19 @@ std::vector<Params> Script::Parse()
 
 				CharDefs.push_back(temp);
 				CharNames.push_back(text);
-				params.type = ScriptDefs::CHARDEF;
+				ScriptList.type = ScriptEnum::CHARDEF;
 			}
 		}
 		for (int i = 0; i < CharNames.size(); i++)
 		{
 			if (type == CharDefs[i])
 			{
-				params.CharName = CharNames[i];
-				params.CharText = text;
-				params.type = ScriptDefs::CHARSAY;
+				ScriptList.CharName = CharNames[i];
+				ScriptList.CharText = text;
+				ScriptList.type = ScriptEnum::CHARSAY;
 			}
 		}
-		ParamVector.push_back(params);
+		ScriptVector.push_back(ScriptList);
 	}
-	return ParamVector;
+	return ScriptVector;
 }

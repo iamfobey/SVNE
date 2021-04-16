@@ -19,20 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Settings\Settings.h" />
+    <ClInclude Include="src\Parsers\Settings\Settings.h" />
     <ClInclude Include="src\Game\Game.h" />
-    <ClInclude Include="src\Script\Script.h" />
+    <ClInclude Include="src\Parsers\Script\Script.h" />
     <ClInclude Include="src\Core\Engine.h" />
     <ClInclude Include="src\Core\stdafx.h" />
     <ClInclude Include="src\Tools\Tools.h" />
+    <ClInclude Include="src\Tools\TextBox.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Settings\Settings.cpp" />
+    <ClCompile Include="src\Parsers\Settings\Settings.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
-    <ClCompile Include="src\Script\Script.cpp" />
+    <ClCompile Include="src\Parsers\Script\Script.cpp" />
     <ClCompile Include="src\Core\Engine.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Tools\Tools.cpp" />
+    <ClCompile Include="src\Tools\TextBox.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -117,14 +119,20 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x32\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x32\;$(SolutionDir)SVNE\src\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)SVNE\lib\x32\SFML\;</AdditionalLibraryDirectories>
-      <DelayLoadDLLs>$(SolutionDir)bin\x32\openal32;$(SolutionDir)bin\x32\sfml-graphics-d-2;$(SolutionDir)bin\x32\sfml-system-d-2;$(SolutionDir)bin\x32\sfml-window-d-2;$(SolutionDir)bin\x32\sfml-audio-d-2;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <DelayLoadDLLs>$(SolutionDir)bin\x32\openal32.dll;$(SolutionDir)bin\x32\sfml-graphics-d-2.dll;$(SolutionDir)bin\x32\sfml-system-d-2.dll;$(SolutionDir)bin\x32\sfml-window-d-2.dll;$(SolutionDir)bin\x32\sfml-audio-d-2.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SupportUnloadOfDelayLoadedDLL>
+      </SupportUnloadOfDelayLoadedDLL>
+      <PreventDllBinding>
+      </PreventDllBinding>
+      <SupportNobindOfDelayLoadedDLL>
+      </SupportNobindOfDelayLoadedDLL>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,7 +144,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x32\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x32\;$(SolutionDir)SVNE\src\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,7 +163,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x64\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x64\;$(SolutionDir)SVNE\src\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -174,7 +182,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x64\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SVNE\include\x64\;$(SolutionDir)SVNE\src\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
