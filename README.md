@@ -45,7 +45,7 @@ If everything started without problems and the text was displayed, then congratu
 Is just text boring? Then let's display the background!
 Please note that the backgrounds should be located in the ```bin/(platform)/game/assets/images/bg``` folder
 
-To display the background, you need to write background bg1.jpg (the name and extension of the file may be different)
+To display the background, you need to write ```background bg1.jpg``` (the name and extension of the file may be different)
 
 Now run ```SVNE.exe``` from ```bin/(platform)```
 
