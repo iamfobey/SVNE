@@ -47,5 +47,5 @@ Please note that the backgrounds should be located in the ```bin/(platform)/game
 
 To display the background, you need to write background bg1.jpg (the name and extension of the file may be different)
 
-Now run ```SVNE.exe``` from ```bin/(platforms)```
+Now run ```SVNE.exe``` from ```bin/(platform)```
 
