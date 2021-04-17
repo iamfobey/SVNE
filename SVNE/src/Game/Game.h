@@ -3,6 +3,7 @@
 #include "../Core/Engine.h"
 #include "../Parsers/Script/Script.h"
 #include "../Tools/TextBox.h"
+#include "../Tools/Transitions.h"
 
 class Game
 {
@@ -25,9 +26,7 @@ private:
 
 	TextBox TextBox;
 
-	std::string::size_type textPos;
-
-	sf::Clock textClock;
+	bool IsDissolve;
 
 	sf::Texture textureBG;
 	sf::Sprite spriteBG;

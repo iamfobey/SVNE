@@ -6,5 +6,3 @@
 
 void CheckIsTransition(std::fstream& file, std::string fileName);
 void SetTextSettings(sf::Text& text, sf::Font& font, sf::Color color, sf::Vector2f pos, int charSize);
-
-void WrapperText(sf::Text& text, sf::RenderWindow& window);

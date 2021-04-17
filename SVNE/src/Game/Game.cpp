@@ -9,13 +9,12 @@ Game::Game(std::vector<ScriptStruct> pVector)
 
 	param = pVector;
 
-	TextBox.SetColor(sf::Color(0, 0, 0, 165));
+	TextBox.SetColor(sf::Color(0, 0, 0, 125));
 	TextBox.SetSize(sf::Vector2f(1900, 380));
 	TextBox.SetPos(sf::Vector2f(10, 690));
 
 	line = 0;
 	NextLine();
-	textPos = 0;
 }
 
 Game::~Game()
@@ -43,7 +42,6 @@ void Game::NextLine()
 		CharacterName.setString(" ");
 		CharacterText.setString(param[line].content);
 		line++;
-		textPos = 0;
 		return;
 	}
 	else if (param[line].type == ScriptEnum::CHARSAY)
@@ -51,7 +49,6 @@ void Game::NextLine()
 		CharacterName.setString(param[line].CharName);
 		CharacterText.setString(param[line].CharText);
 		line++;
-		textPos = 0;
 		return;
 	}
 	else if (param[line].type == ScriptEnum::CHARDEF)
@@ -64,6 +61,7 @@ void Game::NextLine()
 		textureBG.loadFromFile("game\\assets\\images\\bg\\" + param[line].content);
 		spriteBG.setTexture(textureBG);
 		line++;
+		IsDissolve = true;
 		NextLine();
 	}
 	else
@@ -75,8 +73,11 @@ void Game::NextLine()
 void Game::update(sf::RenderWindow& window)
 {
 	if (WindowClose) window.close();
-
-	WrapperText(CharacterText, window);
+	if (IsDissolve)
+	{
+		dissolve(window, spriteBG);
+		IsDissolve = false;
+	}
 
 	window.clear();
 
