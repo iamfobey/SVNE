@@ -29,6 +29,10 @@ std::vector<ScriptStruct> Script::Parse()
 			type.erase(type.find(" "));
 			text.erase(0, type.length() + 1);
 		}
+		else
+		{
+			goto end2;
+		}
 
 		if (type == "bg")
 		{
@@ -70,13 +74,9 @@ std::vector<ScriptStruct> Script::Parse()
 				ScriptList.type = ScriptEnum::HIDE_SPRITE;
 				goto end;
 			}
-			
+
 			ScriptList.content = text;
 			ScriptList.type = ScriptEnum::SHOW_SPRITE;
-			goto end;
-		}
-		else if (type == "\n")
-		{
 			goto end;
 		}
 
@@ -94,6 +94,8 @@ std::vector<ScriptStruct> Script::Parse()
 	end: {}
 
 		ScriptVector.push_back(ScriptList);
+
+	end2: {}
 	}
 	return ScriptVector;
 }

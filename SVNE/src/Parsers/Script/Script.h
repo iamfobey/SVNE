@@ -11,6 +11,7 @@ enum ScriptEnum
 	MUSIC_STOP,
 	CHARSAY,
 	TEXT,
+	SKIP,
 	BG,
 	CG
 };

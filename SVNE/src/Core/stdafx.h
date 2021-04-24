@@ -1,5 +1,7 @@
 #pragma once
 
+#define SVNE_VERSION v0.0.0.1
+
 #ifdef _DEBUG
 #pragma comment ( lib, "sfml-main-d.lib")
 #pragma comment ( lib, "sfml-window-d.lib")

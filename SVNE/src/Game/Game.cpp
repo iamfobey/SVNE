@@ -105,6 +105,11 @@ void Game::NextLine()
 		line++;
 		NextLine();
 	}
+	else if (param[line].type == ScriptEnum::SKIP)
+	{
+		line++;
+		NextLine();
+	}
 	else
 	{
 		line++;
