@@ -2,41 +2,13 @@
 
 Script::Script()
 {
-	CheckIsTransition(ScriptFile, "game\\script.svne");
+	CheckIsTransition(ScriptFile, "script.svne");
 	ScriptFile.open("game\\script.svne", std::ios::in);
 }
 
 Script::~Script()
 {
 	ScriptFile.close();
-}
-
-void Script::ParseCharacters()
-{
-	std::string type;
-	std::string text;
-
-	while (std::getline(ScriptFile, type))
-	{
-		if (!ScriptFile.eof())
-		{
-			text = type;
-			type.erase(type.find(" "));
-			text.erase(0, type.length() + 1);
-
-			if (type == "Character")
-			{
-				std::string temp = text;
-				text.erase(0, text.find("=") + 2);
-				temp.erase(temp.find(" = "));
-
-				CharDefs.push_back(temp);
-				CharNames.push_back(text);
-			}
-		}
-	}
-	ScriptFile.close();
-	ScriptFile.open("game\\script.svne", std::ios::in);
 }
 
 std::vector<ScriptStruct> Script::Parse()
@@ -47,35 +19,67 @@ std::vector<ScriptStruct> Script::Parse()
 	std::string type;
 	std::string text;
 
-	while (std::getline(ScriptFile, type))
+	while (ScriptFile.good())
 	{
-		if (!ScriptFile.eof())
+		std::getline(ScriptFile, type);
+		text = type;
+
+		if (type.find(" ") != std::string::npos)
 		{
-			text = type;
 			type.erase(type.find(" "));
 			text.erase(0, type.length() + 1);
-
-			if (type == "background")
-			{
-				ScriptList.content = text;
-				ScriptList.type = ScriptEnum::BG;
-			}
-			else if (type == "txt")
-			{
-				ScriptList.type = ScriptEnum::TEXT;
-				ScriptList.content = text;
-			}
-			else if (type == "character")
-			{
-				std::string temp = text;
-				text.erase(0, text.find("=") + 2);
-				temp.erase(temp.find(" = "));
-
-				CharDefs.push_back(temp);
-				CharNames.push_back(text);
-				ScriptList.type = ScriptEnum::CHARDEF;
-			}
 		}
+
+		if (type == "bg")
+		{
+			ScriptList.content = text;
+			ScriptList.type = ScriptEnum::BG;
+			goto end;
+		}
+		else if (type == "txt")
+		{
+			ScriptList.content = text;
+			ScriptList.type = ScriptEnum::TEXT;
+			goto end;
+		}
+		else if (type == "character")
+		{
+			std::string temp = text;
+			temp.erase(temp.find(" = "));
+			text.erase(0, temp.length() + 3);
+
+			CharDefs.push_back(temp);
+			CharNames.push_back(text);
+			goto end;
+		}
+		else if (type == "music.play")
+		{
+			ScriptList.content = text;
+			ScriptList.type = ScriptEnum::MUSIC_PLAY;
+			goto end;
+		}
+		else if (type == "music.stop")
+		{
+			ScriptList.type = ScriptEnum::MUSIC_STOP;
+			goto end;
+		}
+		else if (type == "sprite")
+		{
+			if (text == "hide")
+			{
+				ScriptList.type = ScriptEnum::HIDE_SPRITE;
+				goto end;
+			}
+			
+			ScriptList.content = text;
+			ScriptList.type = ScriptEnum::SHOW_SPRITE;
+			goto end;
+		}
+		else if (type == "\n")
+		{
+			goto end;
+		}
+
 		for (int i = 0; i < CharNames.size(); i++)
 		{
 			if (type == CharDefs[i])
@@ -83,8 +87,12 @@ std::vector<ScriptStruct> Script::Parse()
 				ScriptList.CharName = CharNames[i];
 				ScriptList.CharText = text;
 				ScriptList.type = ScriptEnum::CHARSAY;
+				break;
 			}
 		}
+
+	end: {}
+
 		ScriptVector.push_back(ScriptList);
 	}
 	return ScriptVector;

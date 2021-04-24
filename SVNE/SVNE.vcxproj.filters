@@ -18,7 +18,7 @@
     <ClInclude Include="src\Core\stdafx.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Engine.h">
+    <ClInclude Include="src\Engine\Engine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\Parsers\Script\Script.h">
@@ -27,16 +27,13 @@
     <ClInclude Include="src\Game\Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tools\Tools.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="src\Parsers\Settings\Settings.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tools\TextBox.h">
+    <ClInclude Include="src\Game\Transitions.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tools\Transitions.h">
+    <ClInclude Include="src\Core\Tools.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,7 +41,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Engine.cpp">
+    <ClCompile Include="src\Engine\Engine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\Parsers\Script\Script.cpp">
@@ -53,16 +50,13 @@
     <ClCompile Include="src\Game\Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tools\Tools.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="src\Parsers\Settings\Settings.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tools\TextBox.cpp">
+    <ClCompile Include="src\Game\Transitions.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tools\Transitions.cpp">
+    <ClCompile Include="src\Core\Tools.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

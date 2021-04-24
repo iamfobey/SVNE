@@ -1,5 +1,12 @@
 character me = Dezlow
-background bg1.jpg
+sprite sprite1.png
+bg bg1.jpg
+music.play music.ogg
+
 me Hello World 1!
-background bg2.jpg
+
+bg bg2.jpg
+sprite hide
+music.stop
+
 me Hello World 2!

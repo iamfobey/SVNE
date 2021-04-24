@@ -1,3 +1,7 @@
-Title = Window
-Width = 1280
-Height = 720
+window.setTitle = Window
+window.setWidth = 1280
+window.setHeight = 720
+
+textbox.setImage = textbox.png
+textbox.setPosition = 110, 845
+textbox.setScale = 1.1, 1.1
