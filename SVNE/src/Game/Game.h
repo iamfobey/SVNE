@@ -1,17 +1,16 @@
 #pragma once
 
-#include "Engine/Engine.h"
-#include "Parsers/Script/Script.h"
-#include "Parsers/Settings/Settings.h"
-#include "Transitions.h"
+#include "../Core/Engine.h"
+#include "../Parsers/Script/Script.h"
+#include "../Tools/TextBox.h"
+#include "../Tools/Transitions.h"
 
 class Game
 {
 public:
-	Game(Script& script, Settings& settings);
+	Game(std::vector<ScriptStruct> pVector);
 	~Game();
-
-	void input();
+	void Input();
 	void update(sf::RenderWindow& window);
 private:
 	void NextLine();
@@ -22,22 +21,13 @@ private:
 	sf::Text text;
 
 	std::vector<ScriptStruct> param;
-	std::vector<sf::Sprite> SpriteList;
-
+	bool WindowClose;
 	int line;
 
-	bool WindowClose;
+	TextBox TextBox;
+
 	bool IsDissolve;
 
-	bool DrawSprite;
-
-	Settings* SETTINGS;
-
-	sf::Music music;
-
-	sf::Texture TextureBG;
-	sf::Sprite SpriteBG;
-
-	sf::Texture TextureSPR;
-	sf::Sprite SpriteSPR;
+	sf::Texture textureBG;
+	sf::Sprite spriteBG;
 };

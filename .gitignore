@@ -4,5 +4,3 @@
 *.ilk
 *.pdb
 bin-int/
-bin/Debug
-bin/Development

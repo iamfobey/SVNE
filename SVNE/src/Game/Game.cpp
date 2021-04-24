@@ -1,25 +1,17 @@
 #include "Game.h"
 
-
-Game::Game(Script& script, Settings& settings)
-{	
-	SETTINGS = &settings;
-
-	SETTINGS->Parse();
-
-	font.loadFromFile("game\\assets\\fonts\\Font.ttf");
-	music.setVolume(10);
-
-	SetTextSettings(CharacterName, font, sf::Color::Red, sf::Vector2f(130, 855), 32);
-	SetTextSettings(CharacterText, font, sf::Color::Red, sf::Vector2f(130, 895), 33);
+Game::Game(std::vector<ScriptStruct> pVector)
+{
+	font.loadFromFile("game\\assets\\fonts\\Impact.ttf");
 	
-	param = script.Parse();
+	SetTextSettings(CharacterName, font, sf::Color::Red, sf::Vector2f(30, 700), 49);
+	SetTextSettings(CharacterText, font, sf::Color::Red, sf::Vector2f(25, 760), 44);
 
-	TextureBG.setSmooth(true);
-	TextureSPR.setSmooth(true);
+	param = pVector;
 
-	DrawSprite = false;
-	IsDissolve = false;
+	TextBox.SetColor(sf::Color(0, 0, 0, 125));
+	TextBox.SetSize(sf::Vector2f(1900, 380));
+	TextBox.SetPos(sf::Vector2f(10, 690));
 
 	line = 0;
 	NextLine();
@@ -30,7 +22,7 @@ Game::~Game()
 
 }
 
-void Game::input()
+void Game::Input()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -49,7 +41,6 @@ void Game::NextLine()
 	{
 		CharacterName.setString(" ");
 		CharacterText.setString(param[line].content);
-
 		line++;
 		return;
 	}
@@ -57,81 +48,41 @@ void Game::NextLine()
 	{
 		CharacterName.setString(param[line].CharName);
 		CharacterText.setString(param[line].CharText);
-
 		line++;
 		return;
 	}
+	else if (param[line].type == ScriptEnum::CHARDEF)
+	{
+		line++;
+		NextLine();
+	}
 	else if (param[line].type == ScriptEnum::BG)
 	{
-		TextureBG.loadFromFile("game\\assets\\images\\bg\\" + param[line].content);
-		SpriteBG.setTexture(TextureBG);
-
+		textureBG.loadFromFile("game\\assets\\images\\bg\\" + param[line].content);
+		spriteBG.setTexture(textureBG);
+		line++;
 		IsDissolve = true;
-
-		line++;
-		NextLine();
-	}
-	else if (param[line].type == ScriptEnum::MUSIC_PLAY)
-	{
-		music.openFromFile("game\\assets\\sounds\\music\\" + param[line].content);
-
-		music.play();
-
-		line++;
-		NextLine();
-	}
-	else if (param[line].type == ScriptEnum::MUSIC_STOP)
-	{
-		music.stop();
-
-		line++;
-		NextLine();
-	}
-	else if (param[line].type == ScriptEnum::SHOW_SPRITE)
-	{
-		TextureSPR.loadFromFile("game\\assets\\images\\sprites\\" + param[line].content);
-		SpriteSPR.setTexture(TextureSPR);
-		SpriteSPR.setPosition(sf::Vector2f(350,0));
-
-		DrawSprite = true;
-
-		line++;
-		NextLine();
-	}
-	else if (param[line].type == ScriptEnum::HIDE_SPRITE)
-	{
-		DrawSprite = false;
-
-		line++;
 		NextLine();
 	}
 	else
 	{
 		line++;
-		NextLine();
 	}
 }
 
 void Game::update(sf::RenderWindow& window)
 {
 	if (WindowClose) window.close();
-
 	if (IsDissolve)
 	{
-		dissolve(window, SpriteBG);
+		dissolve(window, spriteBG);
 		IsDissolve = false;
 	}
 
 	window.clear();
 
-	window.draw(SpriteBG);
-	
-	if (DrawSprite)
-	{
-		window.draw(SpriteSPR);
-	}
-
-	window.draw(SETTINGS->GetTextBox());
+	window.draw(spriteBG);
+	window.draw(TextBox.GetTextBox());
 	window.draw(CharacterName);
 	window.draw(CharacterText);
 
